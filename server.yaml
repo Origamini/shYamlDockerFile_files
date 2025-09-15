@@ -31,4 +31,3 @@
       name: nginx
       state: started
       enabled: yes # Ensures Nginx starts on boot
-    
