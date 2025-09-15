@@ -1,0 +1,34 @@
+---
+- name: Installing Apache on worker 1 
+  hosts: worker1
+  become: true
+  tasks:
+  - name: Update apt package cache
+    apt:
+      update_cache: yes
+  - name: Install Apache2 package
+    apt:
+      name: apache2
+      state: present
+  - name: Start Apache2 service
+    service:
+      name: apache2
+      state: started
+      enabled: yes # Ensures Apache starts on boot
+- name: Installing Nginx on worker 2
+  hosts: worker2
+  become: true
+  tasks:
+  - name: Update apt package cache
+    apt:
+      update_cache: yes
+  - name: Installing Nginx package
+    apt:
+      name: nginx
+      state: present
+  - name: Start Nginx service
+    service:
+      name: nginx
+      state: started
+      enabled: yes # Ensures Nginx starts on boot
+    
