@@ -45,3 +45,16 @@
       name: nginx
       state: started
       enabled: yes # Ensures Nginx starts on boot
+  - name: clone repo
+    git:
+      repo: 'https://github.com/Origamini/Transcript.git'
+      dest: /tmp/mywebsite
+      version: main
+  - name: copy index.html to nginx default directory
+    copy: 
+      src: /tmp/mywebsite/index.html
+      dest: /var/www/html/index.html
+      owner: www-data
+      group: www-data
+      mode: '0644'
+      remote_src: yes
