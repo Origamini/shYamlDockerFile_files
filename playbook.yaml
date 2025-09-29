@@ -27,6 +27,7 @@
       owner: www-data
       group: www-data
       mode: '0644'
+      remote_src: yes
       
 - name: Installing Nginx on worker 2
   hosts: worker2
